@@ -1,11 +1,31 @@
 {
-  "Technology": [
-    "https://techcrunch.com/feed/"
-  ],
-  "World": [
-    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
-  ],
   "AI": [
-    "https://openai.com/news/rss.xml"
+    "https://feeds.feedburner.com/oreilly/radar",
+    "https://huggingface.co/blog/feed.xml"
+  ],
+
+  "Technology": [
+    "https://techcrunch.com/feed/",
+    "https://www.theverge.com/rss/index.xml"
+  ],
+
+  "IndianCurrentAffairs": [
+    "https://www.thehindu.com/news/national/feeder/default.rss",
+    "https://www.business-standard.com/rss/latest.rss"
+  ],
+
+  "Finance": [
+    "https://www.moneycontrol.com/rss/business.xml",
+    "https://www.business-standard.com/rss/markets-106.rss"
+  ],
+
+  "Startups": [
+    "https://yourstory.com/feed",
+    "https://techcrunch.com/startups/feed/"
+  ],
+
+  "Travel": [
+    "https://www.lonelyplanet.com/news/rss",
+    "https://www.cntraveler.com/feed/rss"
   ]
 }
