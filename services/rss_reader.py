@@ -1,5 +1,5 @@
 import feedparser
-from database import create_database, save_news
+from services.database import create_database, save_news
 
 RSS_FEEDS = {
     "Technology": "https://techcrunch.com/feed/",
