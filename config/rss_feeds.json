@@ -1,0 +1,11 @@
+{
+  "Technology": [
+    "https://techcrunch.com/feed/"
+  ],
+  "World": [
+    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"
+  ],
+  "AI": [
+    "https://openai.com/news/rss.xml"
+  ]
+}
