@@ -39,11 +39,12 @@ def migrate_database(cursor):
 
     new_columns = {
         "score": "INTEGER DEFAULT 0",
-        "status": "TEXT DEFAULT 'NEW'",
-        "research_status": "TEXT DEFAULT 'PENDING'",
-        "script_status": "TEXT DEFAULT 'PENDING'",
-        "video_status": "TEXT DEFAULT 'PENDING'",
-        "uploaded": "INTEGER DEFAULT 0"
+    "status": "TEXT DEFAULT 'NEW'",
+    "research_status": "TEXT DEFAULT 'PENDING'",
+    "script_status": "TEXT DEFAULT 'PENDING'",
+    "video_status": "TEXT DEFAULT 'PENDING'",
+    "uploaded": "INTEGER DEFAULT 0",
+    "article_text": "TEXT"
     }
 
     for column_name, definition in new_columns.items():
@@ -54,15 +55,27 @@ def migrate_database(cursor):
             )
 
 
-def save_news(category, title, link, published):
+def save_news(category, title, link, published, article_text=""):
     conn = get_connection()
     cursor = conn.cursor()
 
     try:
         cursor.execute("""
-            INSERT INTO news(category,title,link,published)
-            VALUES(?,?,?,?)
-        """, (category, title, link, published))
+            INSERT INTO news(
+                category,
+                title,
+                link,
+                published,
+                article_text
+            )
+            VALUES (?, ?, ?, ?, ?)
+        """, (
+            category,
+            title,
+            link,
+            published,
+            article_text
+        ))
 
         conn.commit()
 

@@ -1,23 +1,23 @@
 import sqlite3
 
+DB_NAME = "database/orion.db"
+
 
 def get_top_story():
-
-    conn = sqlite3.connect("database/orion.db")
+    conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT title, category
+        SELECT title,
+               category,
+               article_text
         FROM news
         ORDER BY score DESC
         LIMIT 1
     """)
 
-    row = cursor.fetchone()
+    story = cursor.fetchone()
 
     conn.close()
 
-    if row:
-        return row[0], row[1]
-
-    return None
+    return story

@@ -1,5 +1,6 @@
 import feedparser
 from services.database import create_database, save_news
+from collectors.article_fetcher import fetch_article
 
 RSS_FEEDS = {
     "Technology": "https://techcrunch.com/feed/",
@@ -23,7 +24,17 @@ def fetch_news():
             link = article.link
             published = getattr(article, "published", "")
 
-            save_news(category, title, link, published)
+            print("Downloading article...")
+
+            article_text = fetch_article(link)
+
+            save_news(
+                category,
+                title,
+                link,
+                published,
+                article_text
+            )
 
             print("✓", title)
 
