@@ -13,3 +13,6 @@ __pycache__/
 
 # Output
 output/
+
+# Generated AI output
+output/
