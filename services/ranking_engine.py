@@ -45,8 +45,22 @@ def rank_articles():
     ranked = []
 
     for article in articles:
-        score = calculate_score(article[2])
-        ranked.append((score, article))
+
+        article_id = article[0]
+        category = article[1]
+        title = article[2]
+
+        score = calculate_score(title)
+
+        # Save score into database
+        cursor.execute(
+            "UPDATE news SET score=? WHERE id=?",
+            (score, article_id)
+        )
+
+        ranked.append((score, category, title))
+
+    conn.commit()
 
     ranked.sort(reverse=True)
 
@@ -54,8 +68,8 @@ def rank_articles():
     print("PROJECT ORION - TOP STORIES")
     print("=" * 80)
 
-    for score, article in ranked:
-        print(f"Score: {score:3} | {article[1]:10} | {article[2]}")
+    for score, category, title in ranked:
+        print(f"Score: {score:3} | {category:12} | {title}")
 
     conn.close()
 
